@@ -25,6 +25,11 @@ waiting for a command that never comes.
 is not writable (local testing). No network, no randomness, no imports
 beyond `os`.
 
+Before writing, `main()` validates the line at runtime: it must be
+non-blank and between 1 and 200 characters, otherwise the program raises
+a clear `ValueError` and writes nothing. This guards the 200-character
+gate so an over-long or empty line can never be submitted silently.
+
 ## How to run
 
 ```sh
